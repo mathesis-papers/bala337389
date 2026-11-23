@@ -5,13 +5,15 @@
 We give a proof of Peter Bala's all-column conjecture in the final FORMULA of OEIS A337389, revision 40 (May 5, 2022), by specializing the binomial identity proved by Mark Wildon on November 27, 2013, and identified there by Ira Gessel as terminating Kummer summation. The identity holds with an indeterminate column parameter and includes the individual column identities previously proved by Bala and Blanco Gómez. We also prove a squared-coefficient identity and Gauss congruences for every integer parameter. We relate the stronger recorded congruences to their prior proofs, and derive the companion recurrence and asymptotic formulas, including growth along the main diagonal.
 
 - PDF: [frozen public file](paper.pdf)
+- DOI: [https://doi.org/10.5281/zenodo.24413782](https://doi.org/10.5281/zenodo.24413782)
+- Concept DOI: [https://doi.org/10.5281/zenodo.24413781](https://doi.org/10.5281/zenodo.24413781)
 - License: CC-BY-4.0
 - Version: 2
 - Mathesis record: [bala337389](https://mathesis-omega-research.apps.chrono-ai.fun/papers/bala337389?version=2)
 
 ## How to cite
 
-Haobo Ma, Wenlin Zhang (2026). A short proof of Bala's all-column conjecture using Wildon's binomial identity. Mathesis, version 2. https://mathesis-omega-research.apps.chrono-ai.fun/papers/bala337389?version=2
+Haobo Ma, Wenlin Zhang (2026). A short proof of Bala's all-column conjecture using Wildon's binomial identity. Mathesis, version 2. https://doi.org/10.5281/zenodo.24413782
 
 ## Statement progress
 
