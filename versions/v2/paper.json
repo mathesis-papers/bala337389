@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 102903,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "df3e29de79f7fb7d26cddb091492178c689b3f18a7dde2d276f5943d5953bfb3",
+      "sha256": "df3e29de79f7fb7d26cddb091492178c689b3f18a7dde2d276f5943d5953bfb3"
+    },
+    "source": {
+      "bytes": 17518,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "b2a4f4e8e1f3c1014ca29b2ee59552eda79016e197063f1d097bfb67c6f86c97",
+      "sha256": "b2a4f4e8e1f3c1014ca29b2ee59552eda79016e197063f1d097bfb67c6f86c97"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "We give a proof of Peter Bala's all-column conjecture in the final FORMULA of OEIS A337389, revision 40 (May 5, 2022), by specializing the binomial identity proved by Mark Wildon on November 27, 2013, and identified there by Ira Gessel as terminating Kummer summation. The identity holds with an indeterminate column parameter and includes the individual column identities previously proved by Bala and Blanco Gómez. We also prove a squared-coefficient identity and Gauss congruences for every integer parameter. We relate the stronger recorded congruences to their prior proofs, and derive the companion recurrence and asymptotic formulas, including growth along the main diagonal.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 2,
+    "doi": null,
+    "lean_source": {
+      "revision": "3378450a2176909e857354ab064dde6ec7679b71",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/3378450a2176909e857354ab064dde6ec7679b71/D5/S3/Combinatorics/PowerSeries/BalaA337389Diagonal.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 102903,
+      "sha256": "df3e29de79f7fb7d26cddb091492178c689b3f18a7dde2d276f5943d5953bfb3",
+      "url": "/api/v1/collected-papers/bala337389/files/pdf?version=2"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T16:37:21.369100053Z",
+    "record": "bala337389",
+    "repository_name": "bala337389",
+    "source": {
+      "bytes": 17518,
+      "sha256": "b2a4f4e8e1f3c1014ca29b2ee59552eda79016e197063f1d097bfb67c6f86c97",
+      "url": "/api/v1/collected-papers/bala337389/files/source?version=2"
+    },
+    "title": "A short proof of Bala's all-column conjecture using Wildon's binomial identity",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T16:37:21.369100053Z",
+        "revision": "2",
+        "version": 2
+      }
+    ],
+    "work": "bala337389"
+  }
+}

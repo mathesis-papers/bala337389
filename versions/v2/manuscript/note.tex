@@ -1,0 +1,531 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,array,longtable}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\title{A short proof of Bala's all-column conjecture using Wildon's binomial identity}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{November 16, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give a proof of Peter Bala's all-column conjecture in the final
+FORMULA of OEIS A337389, revision 40 (May 5, 2022), by specializing
+the binomial identity proved by Mark Wildon on November 27, 2013,
+and identified there by Ira Gessel as terminating Kummer summation.
+The identity holds with an indeterminate column parameter and includes
+the individual column identities previously proved by Bala and
+Blanco G\'omez. We also prove a squared-coefficient identity and Gauss
+congruences for every integer parameter. We relate the stronger recorded congruences to
+their prior proofs, and derive the companion recurrence and asymptotic
+formulas, including growth along the main diagonal.
+\end{abstract}
+
+\section{The coefficient identity}
+Seiichi Manyama's array in OEIS A337389 is specified by a nested radical
+and a binomial sum. Peter Bala conjectured a diagonal-coefficient
+description on May 3, 2022; the same line records the cases $k=0,4$
+as known \cite{array}. Its full coefficient identity is a specialization
+of a classical binomial identity: Wildon gave an elementary interpolation
+proof in 2013, and Gessel identified it as terminating Kummer summation
+in an answer on the same day \cite{wildon,gessel2013}.
+We give that short argument and the exact specialization, so the
+connection to the later conjecture is explicit.
+The column $k=1$ was already settled by Bala in the August 29, 2025
+addition to A082758 \cite{columnone}. Blanco G\'omez proved the
+columns $k=2,3$ in Section 3.3 of his October 17, 2026 preprint
+\cite{blanco}. Theorem~\ref{main} places those identities within one
+polynomial identity for all columns; it makes no claim of a new
+binomial evaluation.
+
+For a formal series $F$, write $[x^n]F$ for its coefficient of $x^n$.
+All square roots below have constant term $1$. Initially work over
+$\mathbb Q[k]$, with $k$ an indeterminate, and define
+\begin{align}
+ \Delta_k(t)&=1-2(k+4)t+(k-4)^2t^2,\nonumber\\
+ d_k(t)&=\sqrt{\Delta_k(t)},\nonumber\\
+ A_k(t)&=\sqrt{\frac{1+(k-4)t+d_k(t)}{2\Delta_k(t)}},
+ &T(n,k)&=[t^n]A_k(t),\label{defA}\\
+ \Phi_k(u)&=\frac{(1+(k-2)u+u^2)(1+u)^2}{(1-u)^2}.
+ \label{defPhi}
+\end{align}
+The radicands have constant term $1$ and the denominators are units.
+For a series $R$ with $R(0)=1$, the equations $S(0)=1$ and $S^2=R$
+determine $[t^n]S$ successively: twice that coefficient equals
+$[t^n]R-\sum_{i=1}^{n-1}[t^i]S[t^{n-i}]S$.
+Thus these definitions give unique elements of $\mathbb Q[k][[t]]$.
+
+\begin{theorem}\label{main}
+For every integer $n\geq0$, the following is an identity in $\mathbb Q[k]$:
+\begin{equation}\label{identity}
+ T(n,k)=[u^n]\Phi_k(u)^n
+ =\sum_{j=0}^n\binom{2n}{2j}\binom{2j}{j}k^{n-j}.
+\end{equation}
+In particular it holds for every element $k$ of a characteristic-zero
+field, including every nonnegative integer column of the source array.
+\end{theorem}
+
+\begin{proof}
+We first recall Wildon's identity \cite{wildon}:
+\begin{equation}\label{kummer}
+ [u^h](1-u)^x(1+u)^{2h-x}
+   =(-1)^h4^h\binom{(x-1)/2}{h}\qquad(h\geq0).
+\end{equation}
+Here $\binom{x}{h}=x(x-1)\cdots(x-h+1)/h!$, including value $1$
+at $h=0$. Both sides are polynomials of degree at most $h$ in $x$.
+For $x=1,3,\ldots,2h-1$, the degree-$2h$ polynomial
+$f(u)=(1-u)^x(1+u)^{2h-x}$ satisfies
+$u^{2h}f(1/u)=-f(u)$, so its middle coefficient vanishes.
+At $x=2h+1$, the left side is
+$(-1)^h\sum_{i=0}^h\binom{2h+1}{i}=(-1)^h4^h$.
+Thus the two degree-at-most-$h$ polynomials agree at $h+1$ points,
+proving \eqref{kummer}; for $h=0$ both sides are $1$.
+
+Now $\Phi_k(u)=(1+u)^2(1+ku/(1-u)^2)$, whence
+\begin{equation}\label{transformed}
+ [u^n]\Phi_k(u)^n=
+ \sum_{m=0}^n\binom nm k^m
+ [u^{n-m}]\frac{(1+u)^{2n}}{(1-u)^{2m}}.
+\end{equation}
+Set $h=n-m$ and $x=-2m$ in \eqref{kummer}.
+With $(a)_r=a(a+1)\cdots(a+r-1)$ and $(a)_0=1$, this gives
+\[
+ \binom nm[u^{n-m}]\frac{(1+u)^{2n}}{(1-u)^{2m}}
+ =\binom nm\frac{4^{n-m}(m+1/2)_{n-m}}{(n-m)!}
+ =\frac{(2n)!}{(2m)!(n-m)!^2}.
+\]
+For the final equality, use
+$(m+1/2)_{n-m}=(2n)!\,m!/(4^{n-m}n!(2m)!)$.
+Replacing $m$ by $n-j$ proves that the diagonal coefficient is the
+sum in \eqref{identity}.
+
+It remains to identify its generating function with \eqref{defA}.
+Introduce an indeterminate $b$ and set $k=b^2$ and $t=s^2$.
+The homomorphism $\mathbb Q[k]\longrightarrow\mathbb Q[b]$ sending
+$k$ to $b^2$ is injective, so an identity after this substitution suffices.
+Let
+\[
+ H_b(s)=\big((1-bs)^2-4s^2\big)^{-1/2}
+       =\sum_{\ell\geq0}p_\ell(b)s^\ell.
+\]
+Expanding first in $s^2/(1-bs)^2$ gives
+\[
+ p_\ell(b)=\sum_{j=0}^{\lfloor\ell/2\rfloor}
+        \binom{\ell}{2j}\binom{2j}{j}b^{\ell-2j}.
+\]
+Consequently the generating series of the sum in \eqref{identity} is
+$E(t)=(H_b(s)+H_b(-s))/2$. If $c=k-4$, then
+\[
+ H_b(s)^2=\frac1{1-2bs+cs^2},\qquad
+ H_b(s)H_b(-s)=\frac1{d_k(t)}.
+\]
+The latter equality follows by squaring and comparing constant terms.
+Taking the square of the even part now gives
+\[
+ E(t)^2=\frac{1+ct}{2\Delta_k(t)}+\frac1{2d_k(t)}
+       =\frac{1+ct+d_k(t)}{2\Delta_k(t)}.
+\]
+Since $E(0)=1$, uniqueness of the normalized square root yields
+$E=A_k$, proving \eqref{identity}, also for $n=0$.
+\end{proof}
+
+\section{Consequences and the companion array}
+\begin{corollary}\label{consequences}
+For $n\geq0$,
+\[
+ T(n,0)=\binom{2n}n,\qquad T(n,4)=\binom{4n}{2n}.
+\]
+For nonnegative integer $k$, $T(n,k)$ is a nonnegative integer.
+The array in OEIS A337419 equals $T(n,-k)$; hence its column $k$
+also has the diagonal description $[u^n]\Phi_{-k}(u)^n$.
+The main diagonal in A337388 is $T(n,n)=[u^n]\Phi_n(u)^n$.
+\end{corollary}
+\begin{proof}
+At $k=0$, the binomial sum has just its $j=n$ term, with the
+polynomial convention $0^0=1$. Nonnegativity and integrality follow
+from the same sum. At $k=4$, use $b=2$ above:
+$H_2(s)=(1-4s)^{-1/2}$, whose coefficient of $s^{2n}$ is
+$\binom{4n}{2n}$. Substituting $-k$ into \eqref{defA} and
+\eqref{identity} gives respectively the NAME and first FORMULA of
+A337419. Substituting $k=n$ gives the NAME of A337388
+\cite{signed,diagonal}. These are consequences of a polynomial identity,
+not limits involving division by $k$ or $k-4$.
+\end{proof}
+
+The odd part of the same series supplies a nearby array without another
+inversion. Define
+\begin{equation}\label{odd}
+ U(n,k)=\sum_{j=0}^n\binom{2n+1}{2j}\binom{2j}{j}k^{n-j}.
+\end{equation}
+\begin{corollary}\label{oddcor}
+The array in OEIS A337369 satisfies
+\begin{equation}\label{oddgf}
+ \sum_{n\geq0}U(n,k)t^n
+ =\sqrt{\frac{2}{\Delta_k(t)(1+(k-4)t+d_k(t))}}.
+\end{equation}
+It also has the polynomial integral description
+$U(n,k)=(2n+1)\int_0^1T(n,kr^2)\,dr$,
+where the integral acts term by term on a polynomial in $r$.
+\end{corollary}
+\begin{proof}
+The series $O(t)=(H_b(s)-H_b(-s))/(2bs)$ has coefficients
+$p_{2n+1}(b)/b=U(n,b^2)$; the numerator is divisible by $bs$.
+Over $\mathbb Q(k)$ its square is
+\[
+ O(t)^2=\frac{1+(k-4)t-d_k(t)}{2kt\Delta_k(t)}
+       =\frac{2}{\Delta_k(t)(1+(k-4)t+d_k(t))},
+\]
+because $(1+(k-4)t)^2-\Delta_k(t)=4kt$.
+The final expression is a series over $\mathbb Q[k]$, and
+the injection into $\mathbb Q(k)$ extends the identity to $k=0$
+as well. Its constant term and $O(0)$ are $1$, proving
+\eqref{oddgf}, the source's NAME \cite{oddarray}.
+For the integral identity compare coefficients of $k^m$ in
+\eqref{identity} and \eqref{odd}: their ratio is
+$(2n+1)/(2m+1)$.
+\end{proof}
+
+\section{Column conjectures and congruences}
+The substitutions $k=1,2,3$ in Theorem~\ref{main} give respectively
+the diagonal identities in Bala's April 3, May 2 and May 3, 2022
+FORMULA blocks of A082758, A337390 and A245926
+\cite{columnone,columntwo,columnthree}.
+For clarity their rational functions are
+\[
+ \Phi_1(u)=\frac{(1+u)(1+u^3)}{(1-u)^2},\quad
+ \Phi_2(u)=\frac{(1+u^2)(1+u)^2}{(1-u)^2},\quad
+ \Phi_3(u)=\frac{(1+u+u^2)(1+u)^2}{(1-u)^2}.
+\]
+Expanding the numerators and $(1-u)^{-2n}$ also proves the double
+and triple sums displayed as equivalent formulations in those entries;
+when $n=0$ their value is $1$. The earlier proofs for these columns
+are credited above.
+
+For a prime $p$, let $v_p(a)$ be the exponent of $p$ in a nonzero
+integer $a$, with $v_p(0)=+\infty$.
+\begin{corollary}\label{gauss}
+For every integer $k$, prime $p$, and integers $m,r\geq1$,
+\[
+ T(mp^r,k)\equiv T(mp^{r-1},k)\pmod {p^r}.
+\]
+\end{corollary}
+\begin{proof}
+First suppose $k\geq0$. The Laurent series
+\[
+ L_k(u)=\frac{\Phi_k(u)}u
+ =\frac{(1+u)^2}u+k\frac{(1+u)^2}{(1-u)^2}
+\]
+has nonnegative integer coefficients and smallest exponent $-1$.
+Regard its coefficient of $u^j$ as the number of colors for a letter
+of weight $j$. The constant term of $L_k(u)^N$ counts length-$N$
+colored words of total weight zero. This set is finite, since each
+letter has weight at most $N-1$ in such a word.
+Let $b_d$ count rotation orbits of primitive weight-zero words of
+length $d$. Every length-$N$ word is a repetition of a unique primitive
+word whose length divides $N$; its primitive word also has weight zero.
+Consequently
+\[
+ T(N,k)=\sum_{d\mid N}d\,b_d.
+\]
+For $N=mp^r$, every divisor of $N$ not dividing $N/p$ has
+$p$-adic valuation $v_p(N)\geq r$. Subtract the two divisor sums.
+For negative $k$, choose $k'\geq0$ congruent to $k$ modulo $p^r$
+and use $T(N,k)\in\mathbb Z[k]$ from Theorem~\ref{main}.
+\end{proof}
+This proves the conditional Gauss-congruence conclusions in all three
+column entries, without restricting the prime.
+
+The stronger statements modulo $p^{2r}$ in the same source blocks
+already have proofs. Pan and Sun \cite[Theorem 1.1]{pansun} proved
+in 2020 that, for $p>3$ and the central trinomial coefficients
+$q_j=[u^j](1+u+u^2)^j$,
+\[
+ v_p(q_{p\ell}-q_\ell)\geq 2+2v_p(\ell).
+\]
+Since $T(n,1)=q_{2n}$, putting
+$\ell=2mp^{r-1}$ proves Bala's $k=1$ supercongruence for $p\geq5$.
+This application was also recorded by Epstein in A082758 on
+July 18, 2026 \cite{columnone}.
+
+\begin{corollary}[Consequences of Blanco G\'omez's transfer theorem]\label{super}
+For $m,r\geq1$,
+\[
+ T(mp^r,k)\equiv T(mp^{r-1},k)\pmod {p^{2r}}
+\]
+holds for $k=2$ and every odd prime $p$, and for $k=1,3$ and
+every prime $p\geq5$.
+\end{corollary}
+\begin{proof}
+Write $G(u)=\Phi_k(u)=\exp(\sum_{j\geq1}c(j)u^j/j)$.
+The three factorizations are
+\[
+ \Phi_1=\frac{(1-u^2)(1-u^6)}{(1-u)^3(1-u^3)},\qquad
+ \Phi_2=\frac{(1-u^2)(1-u^4)}{(1-u)^4},\qquad
+ \Phi_3=\frac{(1-u^2)^2(1-u^3)}{(1-u)^5}.
+\]
+For $G=\prod_{d\mid P}(1-u^d)^{-a_d}$ with integer $a_d$,
+$c(j)=\sum_{d\mid\gcd(j,P)}d a_d$, so $c(pj)=c(j)$ if
+$p\nmid P$. In particular $c$ satisfies hypothesis (H2) of
+Blanco G\'omez's Theorem A, which transfers the congruences to
+$[u^N]G(u)^N$. Apply it with $P=6,4,6$, respectively.
+These are the already proved rows of his Corollary 3.3
+\cite{blanco}, not new supercongruence claims.
+\end{proof}
+
+\begin{corollary}\label{squares}
+For every $n\geq0$, as an identity in $\mathbb Z[k]$,
+\begin{equation}\label{squareid}
+ T(n,k)^2=\sum_{j=0}^{2n}(k-4)^{2n-j}
+             \binom{2j}{j}^{\!2}\binom{2n+j}{2j}.
+\end{equation}
+In particular this proves the squared-coefficient conjecture in
+Bala's May 2, 2022 block of A337390. It also yields the recorded
+square identities of A245926 and A243946 at $k=3,5$
+\cite{columnthree,columnfive}.
+\end{corollary}
+\begin{proof}
+Define the Legendre polynomials by
+$(1-2xs+s^2)^{-1/2}=\sum_{h\geq0}P_h(x)s^h$.
+The series $H_b$ in the proof of Theorem~\ref{main} gives
+$T(n,k)=(k-4)^nP_{2n}(\sqrt{k/(k-4)})$ when $k\ne4$.
+Write ${}_aF_b$ for the hypergeometric series whose coefficient at
+degree $j$ is $\prod_i(\alpha_i)_j/(j!\prod_h(\beta_h)_j)$ for
+numerator parameters $\alpha_i$ and denominator parameters $\beta_h$.
+The polynomial $P_{2n}(x)$ is
+${}_2F_1(-n,n+1/2;1;1-x^2)$: both are polynomial solutions of
+$(1-x^2)y''-2xy'+2n(2n+1)y=0$, normalized by $y(1)=1$.
+Clausen's identity \cite[16.12.2]{clausen}, with parameters
+$-n,n+1/2$, gives
+\[
+ P_{2n}(x)^2={}_3F_2(-2n,2n+1,1/2;1,1;1-x^2)
+ =\sum_{j=0}^{2n}\binom{2j}{j}^{\!2}\binom{2n+j}{2j}
+                  \left(\frac{x^2-1}{4}\right)^j.
+\]
+Substitute $x^2=k/(k-4)$ and multiply by $(k-4)^{2n}$.
+Both resulting expressions are polynomials in $k$, which includes $k=4$.
+\end{proof}
+
+\section{Recurrence and growth of the original array}
+The proof also verifies two formulas recorded before Bala's conjecture.
+These formulas are credited in the source to Manyama and
+V\'aclav Kot\v e\v sovec, respectively \cite{array}.
+Writing $c=k-4$, differentiation of $H_b(s)$ gives
+\[
+ (1-2bs+cs^2)H_b'(s)=(b-cs)H_b(s).
+\]
+It follows that $p_0=1$, $p_1=b$, and, for $\ell\geq2$,
+\begin{equation}\label{prec}
+ \ell p_\ell=(2\ell-1)b p_{\ell-1}-(\ell-1)c p_{\ell-2}.
+\end{equation}
+To eliminate the odd coefficients for $n\geq2$, apply \eqref{prec}
+at $\ell=2n,2n-1,2n-2$. Multiply the first equation by
+$(2n-1)(4n-5)$, substitute the second for
+$(2n-1)p_{2n-1}$, and the third for
+$(4n-5)b p_{2n-3}$. The coefficient of $p_{2n-2}$ is
+\[
+ (4n-1)(4n-3)(4n-5)k
+ -(2n-1)^2(4n-5)c-(4n-1)(2n-2)^2c.
+\]
+It equals $2(4n-3)(4(k+4)n^2-6(k+4)n+k+6)$.
+Thus $T(0,k)=1$, $T(1,k)=k+2$, and
+\begin{align}
+ n(2n-1)(4n-5)T(n,k)
+  ={}&(4n-3)\big(4(k+4)n^2-6(k+4)n+k+6\big)T(n-1,k)
+ \nonumber\\[-2pt]
+ &{}-(k-4)^2(n-1)(2n-3)(4n-1)T(n-2,k).
+ \label{rec}
+\end{align}
+This is precisely Manyama's August 28, 2020 recurrence in A337389.
+The negative-parameter recurrence of A337419 follows by $k\mapsto-k$.
+
+\begin{corollary}\label{oddrec}
+For $n\geq2$, the odd companion has $U(0,k)=1$, $U(1,k)=k+6$, and
+\begin{align*}
+ n(2n+1)(4n-3)U(n,k)
+ ={}&(4n-1)\bigl(4(k+4)n^2-2(k+4)n-k-2\bigr)U(n-1,k)\\
+ &{}-(k-4)^2(n-1)(2n-1)(4n+1)U(n-2,k).
+\end{align*}
+This is Manyama's August 29, 2020 recurrence in A337369.
+\end{corollary}
+\begin{proof}
+For any $h\geq4$, elimination of $p_{h-1},p_{h-3}$ from
+\eqref{prec} gives
+\begin{align*}
+ h(h-1)(2h-5)p_h
+ ={}&\bigl((2h-1)(2h-3)(2h-5)k\\
+ &\quad -(h-1)^2(2h-5)(k-4)
+              -(2h-1)(h-2)^2(k-4)\bigr)p_{h-2}\\
+ &{}-(2h-1)(h-2)(h-3)(k-4)^2p_{h-4}.
+\end{align*}
+Set $h=2n+1$, use $p_{2n+1}=bU(n,b^2)$, and cancel $2b$
+as a polynomial identity. The middle factor becomes
+$(4n-1)(4(k+4)n^2-2(k+4)n-k-2)$ after division by $2$.
+\end{proof}
+
+For fixed real $k>0$, put $b=\sqrt k$ and $M=b+2$.
+Taking the constant term of $(b+z+z^{-1})^{2n}$ yields the sum
+in \eqref{identity}, so
+\[
+ T(n,k)=\frac1{2\pi}\int_{-\pi}^{\pi}(b+2\cos\theta)^{2n}\,d\theta.
+\]
+The absolute value of the base has its unique maximum $M$ at $0$.
+Near $0$, $(b+2\cos\theta)/M=1-\theta^2/M+O(\theta^4)$.
+Outside any fixed neighborhood of $0$ its absolute value is at most
+$M(1-\varepsilon)$ for some $\varepsilon>0$.
+Inside a sufficiently small neighborhood it is positive and its
+normalized $2n$-th power is bounded by $e^{-a n\theta^2}$ for a
+constant $a>0$. Set $y=\sqrt{2n/M}\,\theta$ there and use dominated
+convergence. The limiting integral is
+$\int_{\mathbb R}e^{-y^2}\,dy=\sqrt\pi$, giving
+\begin{equation}\label{asympt}
+ T(n,k)\sim\frac{(2+\sqrt k)^{2n+1/2}}{\sqrt{8\pi n}}
+ \qquad(n\longrightarrow\infty,\ k>0\text{ fixed}).
+\end{equation}
+This proves Kot\v e\v sovec's August 31, 2020 formula.
+
+\begin{corollary}\label{growth}
+For each fixed real $k>0$,
+\[
+ U(n,k)\sim\frac{(2+\sqrt k)^{2n+3/2}}{\sqrt{8k\pi n}}.
+\]
+For any real sequence $b_n\geq2$ with $b_n=o(n)$,
+\[
+ T(n,b_n^2)\sim\frac{(b_n+2)^{2n+1/2}}{\sqrt{8\pi n}}.
+\]
+In particular the two displayed equivalents for the main diagonal
+in A337388 follow:
+\begin{equation}\label{diagrowth}
+ T(n,n)\sim\frac{(2+\sqrt n)^{2n+1/2}}{\sqrt{8\pi n}}
+ \sim\frac{e^{4\sqrt n-4}n^{n-1/4}}{\sqrt{8\pi}}.
+\end{equation}
+\end{corollary}
+\begin{proof}
+For fixed $b=\sqrt k>0$, the same integral as above with exponent
+$2n+1$, divided by $b$, is $U(n,k)$; the Gaussian calculation
+gives the first formula. This is Kot\v e\v sovec's recorded
+A337369 asymptotic.
+For the varying parameter put $M_n=b_n+2$ and
+$\theta=\sqrt{M_n/(2n)}\,y$ in the even integral.
+Since $M_n/n\to0$,
+\[
+ \left(1-\frac{2(1-\cos\theta)}{M_n}\right)^{2n}
+ \longrightarrow e^{-y^2}
+\]
+for fixed $y$. The base is nonnegative since $b_n\geq2$.
+On $[-\pi,\pi]$, $1-\cos\theta\geq2\theta^2/\pi^2$,
+so the transformed integrand, extended by zero, is bounded by
+$e^{-4y^2/\pi^2}$. Dominated convergence proves the second formula.
+Take $b_n=\sqrt n$ for $n\geq4$ and expand
+$(2n+1/2)\log(1+2/\sqrt n)=4\sqrt n-4+O(n^{-1/2})$.
+This proves \eqref{diagrowth}, including Kot\v e\v sovec's 2020
+equivalents. The source's second equivalent includes a factor
+$1+19/(3\sqrt n)+199/(18n)$, which tends to $1$; the displayed
+$\sim$ is therefore established, without interpreting that factor
+as a claimed higher-order error bound.
+\end{proof}
+
+\section{Coverage and verification}
+References to fields below use A337389 revision 40, A082758 revision 103,
+A337390 revision 33, A245926 revision 48, A337419 revision 24,
+A337369 revision 30 and A337388 revision 10. ``Proved'' refers to a
+statement actually recorded in the source; additional generalizations
+are identified separately. No priority assertion is made.
+\begingroup\small
+\begin{longtable}{@{}p{.43\linewidth}p{.53\linewidth}@{}}
+\toprule
+Source statement & Coverage in this note\\\midrule
+A337389, Bala's final FORMULA conjecture & Reproved from the prior binomial identity: Wildon, 2013; Theorem~\ref{main}, all $n,k\geq0$.\\
+A337389, NAME and binomial formula & Proved equal: Theorem~\ref{main}.\\
+Polynomial parameter and integral description & Not posed; proved in Theorem~\ref{main} and Corollary~\ref{oddcor}.\\
+A337389, recorded $k=0,4$ cases & Reproved as known specializations: Corollary~\ref{consequences}.\\
+A082758, April 3, 2022 diagonal conjecture & Reproved; prior proof Bala, 2025: Theorem~\ref{main}, $k=1$.\\
+A337390 and A245926, May 2022 diagonal conjectures & Reproved; prior proof Blanco G\'omez, 2026, Section 3.3: $k=2,3$.\\
+Equivalent column double/triple sums & Proved by numerator expansion after Theorem~\ref{main}; same prior column proofs.\\
+Gauss congruences in those three entries & Proved for all primes: Corollary~\ref{gauss}; all-integer-parameter extension not posed.\\
+A082758, $p^{2r}$ conjecture & Prior proof cited: Pan--Sun, 2020, Theorem 1.1; application recorded by Epstein, 2026.\\
+A337390 and A245926, $p^{2r}$ conjectures & Reproved from prior proof Blanco G\'omez, 2026, Theorem A and Corollary 3.3; Corollary~\ref{super}.\\
+A337390, squared-coefficient conjecture & Proved: Corollary~\ref{squares}; $k=3,5$ also recover the recorded A245926 and A243946 squares.\\
+General square formula and varying-column growth & Not posed; proved in Corollaries~\ref{squares} and \ref{growth}.\\
+A337389 and A337369, Manyama recurrences & Proved: equation~\eqref{rec} and Corollary~\ref{oddrec}.\\
+A337389 and A337369, Kot\v e\v sovec asymptotics & Proved for fixed $k>0$: equation~\eqref{asympt} and Corollary~\ref{growth}.\\
+A337419, NAME, binomial formula, recurrence & Proved by $k\mapsto-k$; Corollary~\ref{consequences} and equation~\eqref{rec}.\\
+A337388, NAME and two asymptotic equivalents & Proved: Corollaries~\ref{consequences} and \ref{growth}; higher-order error bounds not asserted in that source.\\
+A337369, NAME and binomial formula & Proved equal: Corollary~\ref{oddcor}.\\
+Columns $k=0,\ldots,5$, named in A337389 & Covered as specializations, including their recorded recurrences and leading growth formulas where present.\\
+Other combinatorial interpretations, alternate sums and congruences in column entries & Not covered, except the square and supercongruence formulas explicitly listed above.\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+The Lean declaration
+\href{https://github.com/the-omega-institute/trureturing/blob/3378450a2176909e857354ab064dde6ec7679b71/D5/S3/Combinatorics/PowerSeries/BalaA337389Diagonal.lean}{\texttt{BalaA337389Diagonal.result}}
+proves the coefficient identity for every natural parameter and degree,
+including existence of the normalized pair of square roots over
+$\mathbb Q$. Its definitions \texttt{delta}, \texttt{IsColumn}, and
+\texttt{phi} are respectively \eqref{defA}'s discriminant and two
+normalized square equations, and \eqref{defPhi}.
+The polynomial-parameter extension, congruences, square identity,
+companion recurrence and asymptotics have the written proofs and cited
+theorems given here; these are not additional conclusions of that Lean
+declaration. The accompanying exact-rational checker compares finite
+coefficient ranges, both radical constructions, recurrences, column sums,
+square identities, congruences and recorded initial array entries.
+
+\begin{thebibliography}{99}\small
+\bibitem{array} S. Manyama, \emph{Square array defined by a nested
+square root}, OEIS A337389, revision 40, May 5, 2022.
+Final FORMULA conjecture by P. Bala, May 3, 2022.
+\url{https://oeis.org/history/view?seq=A337389&v=40}.
+\bibitem{wildon} M. Wildon, answer to \emph{Combinatorial identities},
+MathOverflow, November 27, 2013, 20:30 UTC.
+\url{https://mathoverflow.net/a/150152}.
+\bibitem{gessel2013} I. M. Gessel, answer to \emph{Combinatorial identities},
+MathOverflow, November 27, 2013, 16:48 UTC; identification with
+terminating Kummer summation.
+\url{https://mathoverflow.net/a/150135}.
+\bibitem{columnone} P. Bala, diagonal identity and its 2025 proof
+addition, and A. R. Epstein, 2026 supercongruence observation,
+in OEIS A082758, revision 103, July 18, 2026.
+\url{https://oeis.org/history/view?seq=A082758&v=103}.
+\bibitem{columntwo} S. Manyama, OEIS A337390, revision 33,
+May 5, 2022; conjectures by P. Bala, May 2, 2022.
+\url{https://oeis.org/history/view?seq=A337390&v=33}.
+\bibitem{columnthree} P. D. Hanna, OEIS A245926, revision 48,
+November 10, 2024; conjectures by P. Bala, May 3, 2022.
+\url{https://oeis.org/history/view?seq=A245926&v=48}.
+\bibitem{blanco} R. Blanco G\'omez, \emph{Exponential transforms and
+supercongruences: an order-two transfer theorem, a first-level criterion,
+and modular forms behind Bala's prime bounds}, version 1,
+October 17, 2026, Theorem A, Corollary 3.3 and Section 3.3.
+\url{https://doi.org/10.5281/zenodo.23429108}.
+Version 2, same date, retains these results:
+\url{https://doi.org/10.5281/zenodo.23430779}.
+\bibitem{pansun} H. Pan and Z.-W. Sun, \emph{Supercongruences for
+central trinomial coefficients}, arXiv:2012.05121v1, December 9, 2020,
+Theorem 1.1. Final version: \emph{Frontiers in Combinatorics and
+Number Theory} \textbf{2} (2026), 55--62.
+\url{https://arxiv.org/abs/2012.05121v3}.
+\bibitem{clausen} NIST Digital Library of Mathematical Functions,
+equation 16.12.2 (Clausen's identity).
+\url{https://dlmf.nist.gov/16.12.E2}.
+\bibitem{signed} S. Manyama, \emph{Signed square array},
+OEIS A337419, revision 24, August 29, 2020.
+\url{https://oeis.org/history/view?seq=A337419&v=24}.
+\bibitem{diagonal} S. Manyama, \emph{Main diagonal of A337389},
+OEIS A337388, revision 10, August 31, 2020.
+\url{https://oeis.org/history/view?seq=A337388&v=10}.
+\bibitem{oddarray} S. Manyama, \emph{Companion square array},
+OEIS A337369, revision 30, August 31, 2020.
+\url{https://oeis.org/history/view?seq=A337369&v=30}.
+\bibitem{columnfive} P. D. Hanna, OEIS A243946, revision 44,
+August 23, 2026.
+\url{https://oeis.org/history/view?seq=A243946&v=44}.
+\end{thebibliography}
+\medskip
+\noindent\small Copyright \copyright\ 2026 Haobo Ma and Wenlin Zhang.
+This note is licensed under Creative Commons Attribution 4.0 International
+(CC BY 4.0), \url{https://creativecommons.org/licenses/by/4.0/}.
+\end{document}

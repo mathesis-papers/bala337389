@@ -1,0 +1,56 @@
+{
+  "id": "bala337389",
+  "revision": 2,
+  "problem_ids": ["bala337389"],
+  "topic": "Bala's all-column diagonal formula for Manyama's square array",
+  "title": "A short proof of Bala's all-column conjecture using Wildon's binomial identity",
+  "creators": [
+    {"name": "Haobo Ma", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Wenlin Zhang", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "We give a proof of Peter Bala's all-column conjecture in the final FORMULA of OEIS A337389, revision 40 (May 5, 2022), by specializing the binomial identity proved by Mark Wildon on November 27, 2013, and identified there by Ira Gessel as terminating Kummer summation. The identity holds with an indeterminate column parameter and includes the individual column identities previously proved by Bala and Blanco Gómez. We also prove a squared-coefficient identity and Gauss congruences for every integer parameter. We relate the stronger recorded congruences to their prior proofs, and derive the companion recurrence and asymptotic formulas, including growth along the main diagonal.",
+  "summary": "A self-contained specialization of Wildon's classical binomial identity proves the all-column formula as a polynomial identity. Written consequences cover the squared-coefficient conjecture, Gauss congruences for all integer parameters, the odd companion recurrence and asymptotic, and the main diagonal's leading growth. Earlier column proofs and supercongruences are credited explicitly.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/3378450a2176909e857354ab064dde6ec7679b71/D5/S3/Combinatorics/PowerSeries/BalaA337389Diagonal.lean",
+  "posing_source": {
+    "url": "https://oeis.org/history/view?seq=A337389&v=40",
+    "entry": "A337389",
+    "revision": 40,
+    "revision_date": "2022-05-05",
+    "locator": "Final FORMULA, signed Peter Bala, May 3, 2022",
+    "conjecture_author": "Peter Bala",
+    "array_author": "Seiichi Manyama"
+  },
+  "verification": {
+    "lean_declaration": "D5.S3.Combinatorics.PowerSeries.BalaA337389Diagonal.result",
+    "lean_source_revision": "3378450a2176909e857354ab064dde6ec7679b71",
+    "lean_scope": "For every natural k, existence of normalized rational formal series satisfying both square equations, and the coefficient identity for every such pair and every natural n.",
+    "written_scope": "Polynomial parameter identity; binomial and radical equality; column coefficient sums; Gauss congruences for all integer parameters and all primes; squared-coefficient identity; even and odd recurrences; fixed-positive-parameter asymptotics; varying parameters k=b_n^2 with b_n>=2 and b_n=o(n), including the main diagonal. Column supercongruences use the cited prior theorems of Pan-Sun and Blanco Gómez.",
+    "finite_scope": "Original exact rational comparisons through degree 24 at 22 parameters, factorial transformation through degree 60 and 21 initial entries; additional square and odd-recurrence comparisons through degree 24 at integer parameters -8 through 16; three column sums through degree 16; bounded Gauss and supercongruence comparisons specified in sibling-checker-output.json.",
+    "checker": "verify.py",
+    "checker_output": "checker-output.json",
+    "sibling_checker_command": "python3 verify.py --siblings",
+    "sibling_checker_output": "sibling-checker-output.json"
+  },
+  "related_sources": [
+    "https://oeis.org/A337419",
+    "https://oeis.org/A337388",
+    "https://oeis.org/A337369",
+    "https://mathoverflow.net/a/150152",
+    "https://mathoverflow.net/a/150135",
+    "https://oeis.org/history/view?seq=A082758&v=103",
+    "https://oeis.org/history/view?seq=A337390&v=33",
+    "https://oeis.org/history/view?seq=A245926&v=48",
+    "https://doi.org/10.5281/zenodo.23429108",
+    "https://arxiv.org/abs/2012.05121v3",
+    "https://dlmf.nist.gov/16.12.E2"
+  ],
+  "prior_work": [
+    {"authors": ["Mark Wildon"], "year": 2013, "locator": "MathOverflow answer 150152, November 27, 2013, 20:30 UTC", "scope": "Polynomial interpolation proof of a binomial identity whose specialization h=n-m, x=-2m yields every coefficient of Bala's all-column formula", "url": "https://mathoverflow.net/a/150152"},
+    {"authors": ["Ira Gessel"], "year": 2013, "locator": "MathOverflow answer 150135, November 27, 2013, 16:48 UTC", "scope": "Identification of the same binomial evaluation as terminating Kummer summation", "url": "https://mathoverflow.net/a/150135"},
+    {"authors": ["Hao Pan", "Zhi-Wei Sun"], "year": 2020, "locator": "Theorem 1.1", "scope": "Central trinomial supercongruence, implying the k=1 tower for p>=5", "url": "https://arxiv.org/abs/2012.05121v1"},
+    {"authors": ["Peter Bala"], "year": 2025, "locator": "A082758 FORMULA addition dated August 29, 2025; history revision 90", "scope": "Diagonal identity for column k=1", "url": "https://oeis.org/history/view?seq=A082758&v=90"},
+    {"authors": ["Andrew R. Epstein"], "year": 2026, "locator": "A082758 FORMULA dated July 18, 2026", "scope": "Explicit application of Pan-Sun to the k=1 supercongruence", "url": "https://oeis.org/history/view?seq=A082758&v=103"},
+    {"authors": ["Roberto Blanco Gómez"], "year": 2026, "locator": "Section 3.3, Theorem A and Corollary 3.3", "scope": "Diagonal identities and supercongruences for k=2,3; alternative derivation of the k=1 supercongruence", "url": "https://doi.org/10.5281/zenodo.23429108"}
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "arithmetic": "exact rational; no floating-point operations",
+  "degree_range": [
+    0,
+    24
+  ],
+  "parameters": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "-7",
+    "-4",
+    "-1",
+    "1/4",
+    "7/3"
+  ],
+  "factorial_transform_degree_range": [
+    0,
+    60
+  ],
+  "checks": {
+    "coefficient_comparisons": 2750,
+    "recurrence_comparisons": 506,
+    "factorial_transform_comparisons": 1891,
+    "initial_array_entries": 21
+  },
+  "scope": "Finite coefficient, radical, recurrence and boundary comparisons; unbounded statements have written proofs in note.tex."
+}
