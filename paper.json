@@ -31,6 +31,7 @@
     "concept_doi": "10.5281/zenodo.24413781",
     "current_version": 2,
     "doi": "10.5281/zenodo.24413782",
+    "kind": "note",
     "lean_source": {
       "revision": "3378450a2176909e857354ab064dde6ec7679b71",
       "url": "https://github.com/the-omega-institute/trureturing/blob/3378450a2176909e857354ab064dde6ec7679b71/D5/S3/Combinatorics/PowerSeries/BalaA337389Diagonal.lean"
@@ -55,10 +56,12 @@
     "title": "A short proof of Bala's all-column conjecture using Wildon's binomial identity",
     "versions": [
       {
+        "changelog": null,
         "previous_version": null,
         "published_on": "2026-11-23T16:37:21.369100053Z",
         "revision": "2",
-        "version": 2
+        "version": 2,
+        "version_label": null
       }
     ],
     "work": "bala337389"
